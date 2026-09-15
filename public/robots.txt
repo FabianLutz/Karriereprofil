@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fabian-lutz-portfolio.de/sitemap.xml

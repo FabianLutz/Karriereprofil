@@ -1,0 +1,66 @@
+---
+// datenschutz.astro - Standalone Datenschutzerklärung Seite
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Datenschutzerklärung | Fabian Lutz Karriereportfolio"
+  description="Datenschutzerklärung nach DSGVO für das Karriereportfolio von Fabian Lutz. 100% cookie-frei."
+  noindex={true}
+>
+  <Header />
+
+  <main id="main-content" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-grow">
+    <div class="bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-3xl p-6 sm:p-10 shadow-bento">
+      <h1 class="text-3xl font-extrabold text-nordic-slate-900 mb-6">
+        Datenschutzerklärung
+      </h1>
+
+      <div class="space-y-6 text-sm text-nordic-slate-700 leading-relaxed">
+        <div>
+          <h2 class="text-base font-bold text-nordic-slate-900 mb-2">1. Datenschutz auf einen Blick</h2>
+          <p>
+            Diese Website ist zu 100% cookie-frei. Es werden weder Tracking-Werkzeuge noch externe Werbenetzwerke oder Drittanbieter-Schriftarten (wie Google Fonts) geladen. Es werden ausschließlich lokale System-Schriftarten verwendet.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-base font-bold text-nordic-slate-900 mb-2">2. Verantwortliche Stelle</h2>
+          <p>
+            Fabian Lutz<br />
+            Gustav-Bregenzerstr. 8<br />
+            72488 Sigmaringen<br />
+            E-Mail: lutzfabi2@gmail.com
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-base font-bold text-nordic-slate-900 mb-2">3. Datenerfassung bei Kontaktaufnahme</h2>
+          <p>
+            Wenn Sie über das Kontaktformular oder per E-Mail an mich herantreten, werden die von Ihnen mitgeteilten Daten (wie Name, E-Mail-Adresse, Telefonnummer und Inhalt Ihrer Nachricht) ausschließlich zur Bearbeitung und Beantwortung Ihrer Anfrage verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b und lit. f DSGVO.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-base font-bold text-nordic-slate-900 mb-2">4. Ihre Betroffenenrechte</h2>
+          <p>
+            Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten sowie ein Recht auf Berichtigung, Sperrung oder Löschung.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-slate-100">
+        <a
+          href={import.meta.env.BASE_URL}
+          class="inline-flex items-center gap-2 text-xs font-semibold text-nordic-emerald-700 hover:text-nordic-emerald-800"
+        >
+          ← Zurück zum Hauptportfolio
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

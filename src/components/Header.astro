@@ -1,0 +1,161 @@
+---
+// Header.astro - Sticky Navigationsleiste im Nordic Editorial Tech Design
+---
+
+<header class="sticky top-0 z-50 w-full backdrop-blur-md bg-white/85 border-b border-slate-200/80 transition-all duration-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+    <!-- Logo & Profil-Badge -->
+    <a 
+      href="#hero" 
+      class="group flex items-center gap-3 py-2 rounded-lg focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 focus-visible:ring-offset-2 outline-none transition-transform active:scale-[0.98]"
+      aria-label="Fabian Lutz Startseite"
+    >
+      <div class="w-10 h-10 rounded-xl bg-nordic-slate-900 border border-white/10 flex items-center justify-center font-bold text-white shadow-sm group-hover:border-nordic-emerald-500/50 transition-colors">
+        <span class="text-sm tracking-tight">FL</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-lg font-bold tracking-tight text-nordic-slate-900 group-hover:text-nordic-emerald-600 transition-colors">
+          Fabian Lutz
+        </span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-nordic-emerald-600 -mt-1">
+          Engineering & IT
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation (Einzeilig, whitespace-nowrap, min 48px Touch-Target) -->
+    <nav class="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Hauptnavigation">
+      <a 
+        href="#experience" 
+        class="h-10 px-3.5 flex items-center text-sm font-medium text-nordic-slate-700 hover:text-nordic-slate-900 hover:bg-slate-100/80 rounded-lg whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+      >
+        Erfahrung
+      </a>
+      <a 
+        href="#skills" 
+        class="h-10 px-3.5 flex items-center text-sm font-medium text-nordic-slate-700 hover:text-nordic-slate-900 hover:bg-slate-100/80 rounded-lg whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+      >
+        Skills & Tech
+      </a>
+      <a 
+        href="#projects" 
+        class="h-10 px-3.5 flex items-center text-sm font-medium text-nordic-slate-700 hover:text-nordic-slate-900 hover:bg-slate-100/80 rounded-lg whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+      >
+        Projekte & Impact
+      </a>
+      <a 
+        href="#philosophy" 
+        class="h-10 px-3.5 flex items-center text-sm font-medium text-nordic-slate-700 hover:text-nordic-slate-900 hover:bg-slate-100/80 rounded-lg whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+      >
+        Philosophie
+      </a>
+      <a 
+        href="#about" 
+        class="h-10 px-3.5 flex items-center text-sm font-medium text-nordic-slate-700 hover:text-nordic-slate-900 hover:bg-slate-100/80 rounded-lg whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+      >
+        Über mich
+      </a>
+    </nav>
+
+    <!-- Header Actions (CTA Button einzeilig, min-h 44px / h-10) -->
+    <div class="hidden sm:flex items-center gap-3">
+      <a
+        href="#contact"
+        class="h-10 px-5 flex items-center justify-center bg-nordic-emerald-600 hover:bg-nordic-emerald-700 text-white font-semibold text-sm rounded-xl whitespace-nowrap shadow-sm hover:shadow-emerald-glow transition-all duration-200 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 focus-visible:ring-offset-2 outline-none"
+      >
+        Gespräch vereinbaren
+      </a>
+    </div>
+
+    <!-- Mobile Menü Button (Mindestens 48x48px) -->
+    <div class="flex md:hidden items-center">
+      <button
+        id="mobile-menu-toggle"
+        type="button"
+        class="w-12 h-12 flex items-center justify-center rounded-xl text-nordic-slate-800 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+        aria-label="Navigationsmenü öffnen oder schließen"
+        aria-expanded="false"
+        aria-controls="mobile-menu-dropdown"
+      >
+        <svg id="menu-icon-open" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menü -->
+  <div 
+    id="mobile-menu-dropdown" 
+    class="hidden md:hidden border-t border-slate-200 bg-white/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-2 shadow-lg"
+  >
+    <a 
+      href="#experience" 
+      class="mobile-nav-link min-h-[48px] px-4 flex items-center text-base font-semibold text-nordic-slate-800 hover:bg-slate-100 rounded-xl"
+    >
+      Berufserfahrung
+    </a>
+    <a 
+      href="#skills" 
+      class="mobile-nav-link min-h-[48px] px-4 flex items-center text-base font-semibold text-nordic-slate-800 hover:bg-slate-100 rounded-xl"
+    >
+      Skills & Tech-Stack
+    </a>
+    <a 
+      href="#projects" 
+      class="mobile-nav-link min-h-[48px] px-4 flex items-center text-base font-semibold text-nordic-slate-800 hover:bg-slate-100 rounded-xl"
+    >
+      Case Studies & Projekte
+    </a>
+    <a 
+      href="#philosophy" 
+      class="mobile-nav-link min-h-[48px] px-4 flex items-center text-base font-semibold text-nordic-slate-800 hover:bg-slate-100 rounded-xl"
+    >
+      Arbeitsweise & Werte
+    </a>
+    <a 
+      href="#about" 
+      class="mobile-nav-link min-h-[48px] px-4 flex items-center text-base font-semibold text-nordic-slate-800 hover:bg-slate-100 rounded-xl"
+    >
+      Über Fabian Lutz
+    </a>
+    <div class="pt-3">
+      <a 
+        href="#contact" 
+        class="mobile-nav-link min-h-[48px] w-full flex items-center justify-center bg-nordic-emerald-600 hover:bg-nordic-emerald-700 text-white font-semibold rounded-xl text-center shadow-sm"
+      >
+        Gespräch vereinbaren
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile Menü Steuerung (< 1 KB)
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  const menuDropdown = document.getElementById('mobile-menu-dropdown');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  function toggleMenu() {
+    const isExpanded = menuToggle?.getAttribute('aria-expanded') === 'true';
+    menuToggle?.setAttribute('aria-expanded', String(!isExpanded));
+    menuDropdown?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden');
+    iconClose?.classList.toggle('hidden');
+  }
+
+  menuToggle?.addEventListener('click', toggleMenu);
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (menuDropdown && !menuDropdown.classList.contains('hidden')) {
+        toggleMenu();
+      }
+    });
+  });
+</script>

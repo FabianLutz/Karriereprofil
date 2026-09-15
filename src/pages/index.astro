@@ -1,0 +1,52 @@
+---
+// index.astro - Hauptseite des Fabian Lutz Karriereportfolios
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import HeroBento from '../components/HeroBento.astro';
+import CareerTimeline from '../components/CareerTimeline.astro';
+import SkillMatrix from '../components/SkillMatrix.astro';
+import ProjectShowcase from '../components/ProjectShowcase.astro';
+import PhilosophySection from '../components/PhilosophySection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import ContactScheduler from '../components/ContactScheduler.astro';
+import LegalModals from '../components/LegalModals.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Fabian Lutz | M.Sc. Digital Business, CSV-Computervalidierung & SAP Analytics"
+  description="Karriereportfolio von Fabian Lutz: Betriebswirt mit echter Systemtiefe. Expertise in CSV-Computervalidierung, GAMP 5, SAP ERP/QM, SAP Analytics Cloud und skalierbaren digitalen Geschäftsmodellen."
+>
+  <!-- Sticky Header mit Lesebalken -->
+  <Header />
+
+  <!-- Hauptinhalt -->
+  <main id="main-content" class="flex-grow">
+    <!-- 1. Hero Bento Grid (5 Kacheln) -->
+    <HeroBento />
+
+    <!-- 2. Interaktiver Karriere- & Timeline-Explorer -->
+    <CareerTimeline />
+
+    <!-- 3. Interaktive Skill- & Tech-Stack-Matrix -->
+    <SkillMatrix />
+
+    <!-- 4. Interaktives Case-Study- & Projekt-Showcase -->
+    <ProjectShowcase />
+
+    <!-- 5. Arbeitsphilosophie, Werte & Zielrollen -->
+    <PhilosophySection />
+
+    <!-- 6. Über mich & 5-Satz-Kurzprofil -->
+    <AboutSection />
+
+    <!-- 7. Interaktiver Kontakt- & Interview-Planer -->
+    <ContactScheduler />
+  </main>
+
+  <!-- Rechtliche Modals (Impressum & Datenschutz) -->
+  <LegalModals />
+
+  <!-- Footer -->
+  <Footer />
+</Layout>

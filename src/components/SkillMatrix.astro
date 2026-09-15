@@ -1,0 +1,544 @@
+---
+// SkillMatrix.astro - Interaktive Skill- & Tech-Stack-Matrix mit Sofort-Suche im Nordic Design
+---
+
+<section id="skills" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <!-- Sektions-Header -->
+  <div class="max-w-3xl mb-10">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-nordic-emerald-50 border border-nordic-emerald-200 text-nordic-emerald-800 text-xs font-semibold mb-3">
+      <span class="w-2 h-2 rounded-full bg-nordic-emerald-500"></span>
+      Kompetenzprofil & Systemtiefe
+    </div>
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-nordic-slate-900 tracking-tight mb-4">
+      Interaktive Skill- & Tech-Matrix
+    </h2>
+    <p class="text-base sm:text-lg text-nordic-slate-600 leading-relaxed">
+      Filtern Sie Fähigkeiten nach Kategorien oder nutzen Sie die Sofort-Suche, um Qualifikationsgrade, praktische Praxiserfahrung und zugeordnete Projektstationen in Echtzeit abzugleichen.
+    </p>
+  </div>
+
+  <!-- Interaktives Suchfeld & Kategorie-Filter -->
+  <div class="bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-3xl p-6 sm:p-8 shadow-bento mb-10">
+    <div class="flex flex-col lg:flex-row gap-4 lg:items-center justify-between mb-6">
+      
+      <!-- Sofort-Suchfeld -->
+      <div class="relative flex-1 max-w-md">
+        <label for="skill-search-input" class="sr-only">Skills und Technologien durchsuchen</label>
+        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <input
+          type="text"
+          id="skill-search-input"
+          placeholder="Skill suchen (z. B. SAP, GAMP5, Power BI, SQL, DMS)..."
+          class="w-full h-12 pl-11 pr-10 rounded-xl bg-slate-50 border border-slate-200 text-nordic-slate-900 text-sm placeholder-slate-400 focus:bg-white focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 focus-visible:border-transparent outline-none transition-all"
+        />
+        <button
+          type="button"
+          id="skill-search-clear"
+          class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 hidden"
+          aria-label="Suche zurücksetzen"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Trefferanzeige -->
+      <div class="text-xs font-semibold text-nordic-slate-500">
+        Angezeigte Skills: <span id="skill-counter" class="text-nordic-emerald-700 font-bold">20</span> von <span id="skill-total" class="font-bold text-nordic-slate-800">20</span>
+      </div>
+    </div>
+
+    <!-- Kategorie-Pills -->
+    <div class="flex flex-wrap gap-2" role="group" aria-label="Skill-Kategorien filtern">
+      <button
+        type="button"
+        data-category="all"
+        class="skill-cat-btn active min-h-[44px] px-4 py-2 rounded-xl text-xs font-semibold bg-nordic-slate-900 text-white transition-all duration-150 focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+      >
+        Alle Kategorien
+      </button>
+      <button
+        type="button"
+        data-category="csv"
+        class="skill-cat-btn min-h-[44px] px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-nordic-slate-700 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+      >
+        Computervalidierung & GxP
+      </button>
+      <button
+        type="button"
+        data-category="sap"
+        class="skill-cat-btn min-h-[44px] px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-nordic-slate-700 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+      >
+        SAP & Business Analytics
+      </button>
+      <button
+        type="button"
+        data-category="business"
+        class="skill-cat-btn min-h-[44px] px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-nordic-slate-700 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+      >
+        Digitale Geschäftsmodelle
+      </button>
+      <button
+        type="button"
+        data-category="systems"
+        class="skill-cat-btn min-h-[44px] px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-nordic-slate-700 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+      >
+        Dokumentenlenkung & IT
+      </button>
+      <button
+        type="button"
+        data-category="methods"
+        class="skill-cat-btn min-h-[44px] px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-nordic-slate-700 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+      >
+        Methodik & Führung
+      </button>
+      <button
+        type="button"
+        data-category="ai"
+        class="skill-cat-btn min-h-[44px] px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-nordic-slate-700 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+      >
+        KI- & Agenten-Orchestrierung
+      </button>
+    </div>
+  </div>
+
+  <!-- Skill Karten Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="skills-grid">
+
+    <!-- SKILL: GAMP 5 (CSV) -->
+    <div data-category="csv" data-keywords="gamp gamp5 csv validierung computer qualifizierung richtlinie" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">GAMP 5 & CSV</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Experte</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Risikobasierte Validierung computerisierter Systeme, Validierungspläne, Lasten- und Pflichtenhefte, Abweichungsberichte.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: Maquet / Getinge & Concept Heidelberg</span>
+      </div>
+    </div>
+
+    <!-- SKILL: ISO 13485 & ISO 9001 (CSV) -->
+    <div data-category="csv" data-keywords="iso 13485 9001 qm qualitätsmanagement medtech audit" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">ISO 13485 & ISO 9001</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Kernkompetenz</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Regulierte Qualitätsmanagementsysteme der Medizintechnik, Begleitung von Audits durch Benannte Stellen und Behörden.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: Aesculap AG (Team QPI)</span>
+      </div>
+    </div>
+
+    <!-- SKILL: Risikoanalysen & FMEA (CSV) -->
+    <div data-category="csv" data-keywords="risikoanalyse fmea gxp compliance tests" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">Risikoanalysen & Testbarkeit</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Kernkompetenz</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Sicherstellung der Testbarkeit von Softwareanforderungen, Risikoanalysen und Ableitung korrigierender Maßnahmen (CAPA).
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: Maquet Cardiopulmonary</span>
+      </div>
+    </div>
+
+    <!-- SKILL: SAP ERP / QM (SAP) -->
+    <div data-category="sap" data-keywords="sap erp qm qualitätsmanagement keyuser berechtigungen audit" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">SAP ERP / QM (Key-User)</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Tägliche Praxis</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        QM-Berechtigungsverwaltung, Stammdatenpflege, Vergabe und Entzug von Zugriffsrechten, Materialstammanlage (MADCATs).
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: Aesculap AG & Getinge Revalidierung</span>
+      </div>
+    </div>
+
+    <!-- SKILL: SAP ECM Änderungsmanagement (SAP) -->
+    <div data-category="sap" data-keywords="sap ecm engineering change management freigabe änderungskoordinator" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">SAP ECM Änderungsmanagement</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Verantwortung</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Planung, Koordination und Freigabe von produktbezogenen und organisatorischen Änderungen im regulierten ECM-Workflow.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: Aesculap AG ECM-Kernteam</span>
+      </div>
+    </div>
+
+    <!-- SKILL: SAP Analytics Cloud (SAP) -->
+    <div data-category="sap" data-keywords="sap sac analytics cloud stories bi business intelligence badges" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">SAP Analytics Cloud (SAC)</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-amber-100 text-nordic-amber-800">2x Badges</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Erstellung interaktiver Management-Stories, Dashboard-Design, explorative Datenanalyse und KPI-Visualisierung.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Zertifiziert: SAP Learning (Juni 2026)</span>
+      </div>
+    </div>
+
+    <!-- SKILL: SAP Business Data Cloud (SAP) -->
+    <div data-category="sap" data-keywords="sap business data cloud bdc dwh datenintegration" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">SAP Business Data Cloud</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-amber-100 text-nordic-amber-800">Badge</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Fundierte Kenntnisse in Datenintegrations-Konzepten, Cloud Data Layering und moderner Datenarchitektur im SAP-Ökosystem.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Zertifiziert: SAP Learning (Juni 2026)</span>
+      </div>
+    </div>
+
+    <!-- SKILL: Microsoft Power BI & DAX (SAP / Analytics) -->
+    <div data-category="sap" data-keywords="power bi powerbi dax power query dashboard lms reporting" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">Microsoft Power BI & DAX</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Fortgeschritten</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Entwicklung von Berechtigungs- und Compliance-Dashboards, DAX-Measures, Power Query Datenmodellierung über heterogene Quellen.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: Getinge (LMS & SAP Audit-Dashboard)</span>
+      </div>
+    </div>
+
+    <!-- SKILL: SQL & Datenmodellierung (SAP / Analytics) -->
+    <div data-category="sap" data-keywords="sql ddl dml datenbanken postgresql etl data warehouse" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">SQL & DWH-Konzepte</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Fundiert</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Relationale Datenabfragen (DDL/DML), ETL-Logik, Datenbereinigung und Konzeption analytischer Datenschemata.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Studium: Business Intelligence (Note 1,3)</span>
+      </div>
+    </div>
+
+    <!-- SKILL: Hybride Geschäftsmodelle MedTech (Business) -->
+    <div data-category="business" data-keywords="geschäftsmodelle medtech monetarisierung saas chirurgie" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">Hybride MedTech-Modelle</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Note 1,3</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Erfolgsfaktorenanalyse digitaler minimalinvasiver Chirurgie, Subscription- und nutzungsbasierte Preismodelle.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: Masterthesis Aesculap Global Marketing</span>
+      </div>
+    </div>
+
+    <!-- SKILL: Requirements Engineering (Business) -->
+    <div data-category="business" data-keywords="requirements engineering lastenheft pflichtenheft spezifikation" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">Requirements Engineering</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Kernkompetenz</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Strukturierte Erhebung von Nutzer- und Plattformanforderungen, Übersetzung klinischer Bedarfe in technische Pflichtenhefte.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: Aesculap AG & Getinge</span>
+      </div>
+    </div>
+
+    <!-- SKILL: B.DoCS DMS & Dokumentenlenkung (Systems) -->
+    <div data-category="systems" data-keywords="bdocs dms dokumentenlenkung opentext administration 1st level" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">B.DoCS & OpenText DMS</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Spezialist</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Spartenweite Administration von B.DoCS, Case Management, Rollenkonzepte, 1st Level Support und weltweiter Rollout.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: Aesculap AG (2020 bis 2023)</span>
+      </div>
+    </div>
+
+    <!-- SKILL: Infor LN ERP & Polarion (Systems) -->
+    <div data-category="systems" data-keywords="infor ln erp polarion alm tools testing" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">Infor LN ERP & Polarion ALM</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Key-User</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        ERP-Einführungserfahrung, Prozessabnahmen, Datenmigrationstests sowie Anforderungs- und Testmanagement in Polarion ALM.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: Liebherr-Components & Getinge</span>
+      </div>
+    </div>
+
+    <!-- SKILL: E-Learning & Articulate Storyline (Systems) -->
+    <div data-category="systems" data-keywords="articulate storyline elearning schulung trainings konzeption" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">Articulate Storyline (E-Learning)</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Praxis</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Didaktische Konzeption und digitale Produktion interaktiver E-Learnings zur weltweiten Qualifizierung von QM- und DMS-Anwendern.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: Aesculap AG</span>
+      </div>
+    </div>
+
+    <!-- SKILL: Agile Methoden & Scrum (Methods) -->
+    <div data-category="methods" data-keywords="agil scrum kanban sprint backlog projektmanagement" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">Agile Methoden (Scrum/Kanban)</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Praxis</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Iterative Arbeitsweisen, Sprint-Planung, Backlog-Strukturierung und kollaboratives Arbeiten in interdisziplinären Projektteams.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: IT- und QM-Projekte</span>
+      </div>
+    </div>
+
+    <!-- SKILL: Stakeholder Management & Schulungen (Methods) -->
+    <div data-category="methods" data-keywords="stakeholder schulung führung moderation präsentation c-level" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">Stakeholder Management</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Ausgezeichnet</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Kommunikation auf Augenhöhe von Anwendern bis zu C-Level-Führungskräften, mehrsprachige internationale Trainings auf Englisch.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Zeugnis: „geschätzter Ansprechpartner international“</span>
+      </div>
+    </div>
+
+    <!-- SKILL: Multi-Agenten-Architektur & Subagenten (AI) -->
+    <div data-category="ai" data-keywords="ki ai agenten subagenten claude code antigravity meta orchestrierung multi agent" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">Multi-Agenten-Architektur</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Spezialist</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Konzeption domänenspezifischer Subagenten (Claude Code, Antigravity), Rollen-Verträge, Least-Privilege Tooling und koordinierte Multi-Agenten-Workflows.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: awesome-claude-code-subagents</span>
+      </div>
+    </div>
+
+    <!-- SKILL: Multi-Model-Routing & LLM-Evaluation (AI) -->
+    <div data-category="ai" data-keywords="ki ai llm evaluation routing gemini claude openai ollama benchmark" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">Multi-Model-Routing</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Fortgeschritten</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Systematisches Benchmarking und automatisiertes Routing von Entwicklungsaufgaben auf kosten- und qualitätsoptimale LLMs (Flash vs. Pro/Opus).
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: career-ops Evaluations-Pipelines</span>
+      </div>
+    </div>
+
+    <!-- SKILL: Context- & Constraint-Engineering (AI) -->
+    <div data-category="ai" data-keywords="ki ai context engineering prompt halluzinationsvermeidung gsd determinismus" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">Context- & Rule-Engineering</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Kernkompetenz</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Deterministische Wissensübergabe, Null-Halluzinations-Vorgaben, strikte Negativ-Constraints und phasenbasierte Entwicklungszyklen (GSD-Framework).
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: Dieses Portfolio (100% faktenrein)</span>
+      </div>
+    </div>
+
+    <!-- SKILL: Agentic Coding Workflows & Skills/MCP (AI) -->
+    <div data-category="ai" data-keywords="ki ai mcp skills antigravity claude code coderabbit cli headless github" class="skill-item bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-2xl p-5 shadow-sm hover:shadow-bento transition-all duration-200">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-base text-nordic-slate-900">Agentic Tools & Custom Skills</h3>
+        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-nordic-emerald-100 text-nordic-emerald-800">Tägliche Praxis</span>
+      </div>
+      <p class="text-xs text-nordic-slate-600 mb-3 leading-relaxed">
+        Model Context Protocol (MCP), Custom Agent Skills in Antigravity, Headless Terminal-Workflows und automatisierte GitHub-Review-Pipelines.
+      </p>
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-nordic-slate-500">
+        <span>Praxis: Claude Code CLI & Antigravity IDE</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Kein Treffer Hinweis (Hidden by default) -->
+  <div id="no-skills-found" class="hidden bg-white border border-slate-200 rounded-3xl p-10 text-center shadow-sm">
+    <p class="text-base font-semibold text-nordic-slate-800 mb-1">Keine passende Fähigkeit gefunden</p>
+    <p class="text-xs text-nordic-slate-500 mb-4">Probieren Sie einen anderen Suchbegriff oder setzen Sie den Filter zurück.</p>
+    <button
+      type="button"
+      id="reset-skill-filters-btn"
+      class="px-4 py-2 bg-nordic-slate-900 text-white rounded-xl text-xs font-semibold hover:bg-slate-800 transition-colors"
+    >
+      Filter zurücksetzen
+    </button>
+  </div>
+
+  <!-- Ehrlicher Realitäts-Check: Transparente Lernfelder -->
+  <div class="mt-8 bg-slate-50 border border-slate-200/80 rounded-3xl p-6 sm:p-7">
+    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
+      <h3 class="text-sm font-bold text-nordic-slate-900 uppercase tracking-wider">
+        Transparenz & Selbstreflexion: Etablierte Stärken vs. bewusste Lernfelder
+      </h3>
+      <span class="text-xs text-nordic-slate-500">Authentisches Karriereprofil</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+      <div class="p-4 rounded-2xl bg-white border border-slate-200/60">
+        <p class="font-bold text-nordic-emerald-700 mb-1">Belegte Kernstärken</p>
+        <p class="text-nordic-slate-600 leading-relaxed">
+          GAMP 5, Computervalidierung im GxP-Umfeld, SAP ERP/QM, SAP ECM, DMS-Administration, Requirements Engineering, Datenvisualisierung mit Power BI sowie Multi-Agenten-Orchestrierung (Claude Code, Antigravity).
+        </p>
+      </div>
+      <div class="p-4 rounded-2xl bg-white border border-slate-200/60">
+        <p class="font-bold text-nordic-amber-700 mb-1">Ehrlich deklarierte Lernfelder</p>
+        <p class="text-nordic-slate-600 leading-relaxed">
+          21 CFR Part 11 im US-Detail, formale Datenintegritäts-Frameworks, Softwarearchitektur-Design sowie Business Process Reengineering im engeren Sinne.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Skill-Filter- & Suchlogik in Vanilla TypeScript/JS (< 2 KB)
+  const searchInput = document.getElementById('skill-search-input') as HTMLInputElement | null;
+  const clearSearchBtn = document.getElementById('skill-search-clear') as HTMLButtonElement | null;
+  const categoryBtns = document.querySelectorAll<HTMLButtonElement>('.skill-cat-btn');
+  const skillItems = document.querySelectorAll<HTMLElement>('.skill-item');
+  const skillCounter = document.getElementById('skill-counter');
+  const skillTotal = document.getElementById('skill-total');
+  const noSkillsFound = document.getElementById('no-skills-found');
+  const resetFiltersBtn = document.getElementById('reset-skill-filters-btn');
+
+  if (skillTotal) {
+    skillTotal.textContent = skillItems.length.toString();
+  }
+  if (skillCounter) {
+    skillCounter.textContent = skillItems.length.toString();
+  }
+
+  let activeCategory = 'all';
+  let searchQuery = '';
+
+  function applyFilters() {
+    let visibleCount = 0;
+    const query = searchQuery.trim().toLowerCase();
+
+    skillItems.forEach(item => {
+      const itemCat = item.dataset.category || '';
+      const itemKeywords = (item.dataset.keywords || '').toLowerCase();
+      const itemText = (item.textContent || '').toLowerCase();
+
+      const matchesCat = (activeCategory === 'all') || (itemCat === activeCategory);
+      const matchesSearch = !query || itemKeywords.includes(query) || itemText.includes(query);
+
+      if (matchesCat && matchesSearch) {
+        item.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+
+    if (skillCounter) {
+      skillCounter.textContent = visibleCount.toString();
+    }
+
+    if (noSkillsFound) {
+      if (visibleCount === 0) {
+        noSkillsFound.classList.remove('hidden');
+      } else {
+        noSkillsFound.classList.add('hidden');
+      }
+    }
+  }
+
+  // Sucheingabe
+  searchInput?.addEventListener('input', (e) => {
+    searchQuery = (e.target as HTMLInputElement).value;
+    if (clearSearchBtn) {
+      if (searchQuery.length > 0) {
+        clearSearchBtn.classList.remove('hidden');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+      }
+    }
+    applyFilters();
+  });
+
+  // Suche zurücksetzen
+  clearSearchBtn?.addEventListener('click', () => {
+    if (searchInput) {
+      searchInput.value = '';
+      searchQuery = '';
+      clearSearchBtn.classList.add('hidden');
+      searchInput.focus();
+      applyFilters();
+    }
+  });
+
+  // Kategorie-Klick
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      categoryBtns.forEach(b => {
+        b.classList.remove('active', 'bg-nordic-slate-900', 'text-white');
+        b.classList.add('bg-slate-100', 'text-nordic-slate-700');
+      });
+
+      btn.classList.add('active', 'bg-nordic-slate-900', 'text-white');
+      btn.classList.remove('bg-slate-100', 'text-nordic-slate-700');
+
+      activeCategory = btn.dataset.category || 'all';
+      applyFilters();
+    });
+  });
+
+  // Reset Button
+  resetFiltersBtn?.addEventListener('click', () => {
+    if (searchInput) searchInput.value = '';
+    searchQuery = '';
+    activeCategory = 'all';
+    categoryBtns.forEach(b => {
+      if (b.dataset.category === 'all') {
+        b.classList.add('active', 'bg-nordic-slate-900', 'text-white');
+        b.classList.remove('bg-slate-100', 'text-nordic-slate-700');
+      } else {
+        b.classList.remove('active', 'bg-nordic-slate-900', 'text-white');
+        b.classList.add('bg-slate-100', 'text-nordic-slate-700');
+      }
+    });
+    if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
+    applyFilters();
+  });
+</script>

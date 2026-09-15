@@ -1,0 +1,258 @@
+---
+// HeroBento.astro - 5-Kachel Bento-Grid im Modern Nordic Editorial Tech Design
+---
+
+<section id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
+  <!-- Subtile Alabaster-Hintergrund-Akzente -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden -z-10">
+    <div class="absolute top-12 right-1/4 w-96 h-96 bg-nordic-emerald-100/40 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 left-10 w-80 h-80 bg-nordic-amber-100/30 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Bento Grid Container (12 Spalten Layout) -->
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+    
+    <!-- KACHEL 1: Hauptbotschaft & Value Proposition (8 Spalten auf Desktop) -->
+    <div class="md:col-span-12 lg:col-span-8 bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-bento flex flex-col justify-between transition-all duration-300 hover:shadow-bento-hover">
+      <div>
+        <!-- Live-Pulse Status Pill -->
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-nordic-emerald-50 border border-nordic-emerald-200 text-nordic-emerald-800 text-xs sm:text-sm font-semibold mb-6">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-nordic-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-nordic-emerald-500"></span>
+          </span>
+          Offen für neue Herausforderungen: Remote & Hybrid
+        </div>
+
+        <!-- H1 Hauptpositionierung -->
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-nordic-slate-900 leading-[1.15] mb-6">
+          Betriebswirt mit echter Systemtiefe: <span class="text-nordic-emerald-600">CSV-Validierung</span>, SAP-Analytics & agentische KI-Orchestrierung.
+        </h1>
+
+        <!-- Subheadline / Value Proposition (Konform ohne Gedankenstriche) -->
+        <p class="text-base sm:text-lg text-nordic-slate-700 leading-relaxed max-w-3xl mb-8">
+          Ich verbinde regulatorische Präzision im MedTech- und Pharma-Umfeld (GAMP 5, CSV, ISO 13485) mit moderner agentischer KI-Orchestrierung (Claude Code, Google Antigravity) und fundierter SAP-Praxis. Mein Fokus: Systeme und Workflows so strukturieren, dass sie messbare Effizienz schaffen und Teams spürbar entlasten.
+        </p>
+
+        <!-- Vertrauens-Tags -->
+        <div class="flex flex-wrap items-center gap-2.5 mb-8 text-xs font-semibold text-nordic-slate-600">
+          <span class="px-3 py-1 bg-nordic-emerald-50 text-nordic-emerald-800 rounded-lg border border-nordic-emerald-200">
+            Agentic AI & Orchestrierung
+          </span>
+          <span class="px-3 py-1 bg-slate-100 rounded-lg border border-slate-200/60">
+            M.Sc. Digital Business (Note 1,4)
+          </span>
+          <span class="px-3 py-1 bg-slate-100 rounded-lg border border-slate-200/60">
+            Zertifizierter CSV-Beauftragter
+          </span>
+          <span class="px-3 py-1 bg-slate-100 rounded-lg border border-slate-200/60">
+            3x SAP Learning Badges
+          </span>
+          <span class="px-3 py-1 bg-slate-100 rounded-lg border border-slate-200/60">
+            Englisch C1 verhandlungssicher
+          </span>
+        </div>
+      </div>
+
+      <!-- Dual CTAs (Einzeilig, min. 48px Klickhöhe) -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4 border-t border-slate-100">
+        <a
+          href="#contact"
+          data-preset="Lebenslauf & Zeugnisse anfordern"
+          class="cta-preset-btn h-12 px-6 flex items-center justify-center bg-nordic-emerald-600 hover:bg-nordic-emerald-700 text-white font-semibold text-base rounded-xl whitespace-nowrap shadow-sm hover:shadow-emerald-glow transition-all duration-200 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 focus-visible:ring-offset-2 outline-none"
+        >
+          <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Lebenslauf anfordern / PDF
+        </a>
+
+        <a
+          href="#contact"
+          class="h-12 px-6 flex items-center justify-center bg-nordic-slate-100 hover:bg-slate-200 text-nordic-slate-900 font-semibold text-base rounded-xl whitespace-nowrap border border-slate-200/80 transition-all duration-200 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-nordic-slate-800 focus-visible:ring-offset-2 outline-none"
+        >
+          Direkt Kontakt aufnehmen
+        </a>
+      </div>
+    </div>
+
+    <!-- KACHEL 2: Portrait Fabian Lutz (4 Spalten) -->
+    <!-- WICHTIGSTE REGEL: Das Foto darf von KEINEM Banner, Kasten oder Text überdeckt werden! -->
+    <div class="md:col-span-6 lg:col-span-4 bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-3xl p-5 shadow-bento flex flex-col justify-between transition-all duration-300 hover:shadow-bento-hover">
+      <!-- Bild-Container: Vollkommen frei und unverdeckt -->
+      <div class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/60 shadow-inner">
+        <img
+          src={`${import.meta.env.BASE_URL}fabian-lutz.png`}
+          alt="Portrait von Fabian Lutz"
+          class="w-full h-full object-cover object-top filter contrast-[1.03] transition-transform duration-500 hover:scale-[1.02]"
+          loading="eager"
+          width="480"
+          height="600"
+        />
+      </div>
+
+      <!-- Textblock strikt UNTERHALB des Bildes (Keine Überlappung) -->
+      <div class="pt-4 px-1">
+        <div class="flex items-center justify-between gap-2 mb-1">
+          <h2 class="text-xl font-bold text-nordic-slate-900 tracking-tight">
+            Fabian Lutz
+          </h2>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-nordic-emerald-50 text-nordic-emerald-700 border border-nordic-emerald-200">
+            Aktiv verifiziert
+          </span>
+        </div>
+        <p class="text-sm font-semibold text-nordic-emerald-600 mb-1">
+          M.Sc. Digital Business & Management
+        </p>
+        <p class="text-xs text-nordic-slate-500 leading-normal">
+          Spezialist für Computervalidierung, SAP ERP/QM & Agentic AI Engineering
+        </p>
+      </div>
+    </div>
+
+    <!-- KACHEL 3: Verfügbarkeits- & Einsatz-Radar (4 Spalten) -->
+    <div class="md:col-span-6 lg:col-span-4 bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-3xl p-6 sm:p-7 shadow-bento flex flex-col justify-between transition-all duration-300 hover:shadow-bento-hover">
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-nordic-slate-500">
+            Einsatz & Verfügbarkeit
+          </span>
+          <span class="flex h-3 w-3 relative">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-nordic-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-nordic-emerald-500"></span>
+          </span>
+        </div>
+
+        <h3 class="text-lg font-bold text-nordic-slate-900 mb-4">
+          Verfügbarkeits-Radar
+        </h3>
+
+        <div class="space-y-3.5 text-sm">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-nordic-emerald-50 text-nordic-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-nordic-slate-900">Standort Sigmaringen</p>
+              <p class="text-xs text-nordic-slate-600">Baden-Württemberg, reisebereit</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-nordic-emerald-50 text-nordic-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-nordic-slate-900">Remote & Hybrid</p>
+              <p class="text-xs text-nordic-slate-600">Radius 40 bis 45 km: Tuttlingen, Albstadt, Balingen, Hechingen</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-nordic-emerald-50 text-nordic-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-nordic-slate-900">Eintrittstermin: Ab sofort</p>
+              <p class="text-xs text-nordic-slate-600">Kurze Kündigungsfrist von 30 Tagen, sofort einsatzbereit</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-nordic-slate-500">
+        <span>Reaktionszeit auf Anfragen:</span>
+        <span class="font-semibold text-nordic-emerald-700">&lt; 24 Stunden</span>
+      </div>
+    </div>
+
+    <!-- KACHEL 4: Messbarer Impact & Key Metrics (4 Spalten) -->
+    <div class="md:col-span-6 lg:col-span-4 bg-white border border-slate-200/80 ring-1 ring-black/5 rounded-3xl p-6 sm:p-7 shadow-bento flex flex-col justify-between transition-all duration-300 hover:shadow-bento-hover">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wider text-nordic-slate-500 block mb-4">
+          Leistungsnachweis & Exzellenz
+        </span>
+        <h3 class="text-lg font-bold text-nordic-slate-900 mb-6">
+          Zahlen, die überzeugen
+        </h3>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="p-3.5 rounded-2xl bg-nordic-linen border border-slate-200/60">
+            <span class="text-2xl sm:text-3xl font-extrabold text-nordic-slate-900 tracking-tight block">
+              1,4
+            </span>
+            <span class="text-xs font-medium text-nordic-slate-600 mt-1 block">
+              Masterabschluss (Thesis: 1,3)
+            </span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-nordic-linen border border-slate-200/60">
+            <span class="text-2xl sm:text-3xl font-extrabold text-nordic-emerald-600 tracking-tight block">
+              10+ J.
+            </span>
+            <span class="text-xs font-medium text-nordic-slate-600 mt-1 block">
+              Industrie- & MedTech-Praxis
+            </span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-nordic-linen border border-slate-200/60">
+            <span class="text-2xl sm:text-3xl font-extrabold text-nordic-amber-500 tracking-tight block">
+              3x
+            </span>
+            <span class="text-xs font-medium text-nordic-slate-600 mt-1 block">
+              SAP Learning Badges
+            </span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-nordic-linen border border-slate-200/60">
+            <span class="text-2xl sm:text-3xl font-extrabold text-nordic-slate-900 tracking-tight block">
+              100%
+            </span>
+            <span class="text-xs font-medium text-nordic-slate-600 mt-1 block">
+              Audit-Erfolg (GxP / CSV)
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-nordic-slate-500">
+        Belegte Noten und Referenzen aus der Aesculap AG und Getinge-Gruppe
+      </div>
+    </div>
+
+    <!-- KACHEL 5: Engineering- & Führungsphilosophie (4 Spalten, Dunkle Kachel #0F172A) -->
+    <div class="md:col-span-12 lg:col-span-4 bg-nordic-slate-900 border border-white/10 ring-1 ring-white/5 rounded-3xl p-6 sm:p-7 shadow-bento-dark text-white flex flex-col justify-between transition-all duration-300 hover:shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-nordic-emerald-400">
+            Arbeitsphilosophie
+          </span>
+          <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-white/10 text-slate-300 border border-white/10">
+            Kompass
+          </span>
+        </div>
+
+        <blockquote class="text-lg sm:text-xl font-medium text-slate-100 leading-snug mb-4">
+          „Technik und KI müssen Menschen entlasten, statt sie zu überfordern. Valide Prozesse, saubere Datenstrukturen und messbare Effizienz auf Augenhöhe.“
+        </blockquote>
+
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          Mein Leitmotiv ist es, Effizienz zu schaffen: bestehende Prozesse durch intelligente IT-Systeme und agentische Workflows so zu beschleunigen, dass sie schneller, sicherer und verlässlicher durchlaufen.
+        </p>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
+        <span>Vier Worte Selbstbild:</span>
+        <span class="text-nordic-emerald-400 font-semibold">freundlich, optimistisch, ehrlich, charismatisch</span>
+      </div>
+    </div>
+
+  </div>
+</section>
