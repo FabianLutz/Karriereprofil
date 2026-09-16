@@ -27,31 +27,36 @@
     <nav class="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Hauptnavigation">
       <a 
         href="#experience" 
-        class="h-10 px-3.5 flex items-center text-sm font-medium text-nordic-slate-700 hover:text-nordic-slate-900 hover:bg-slate-100/80 rounded-lg whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+        data-section="experience"
+        class="desktop-nav-link h-10 px-3.5 flex items-center text-sm font-medium text-nordic-slate-700 hover:text-nordic-slate-900 hover:bg-slate-100/80 rounded-lg whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
       >
         Erfahrung
       </a>
       <a 
         href="#skills" 
-        class="h-10 px-3.5 flex items-center text-sm font-medium text-nordic-slate-700 hover:text-nordic-slate-900 hover:bg-slate-100/80 rounded-lg whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+        data-section="skills"
+        class="desktop-nav-link h-10 px-3.5 flex items-center text-sm font-medium text-nordic-slate-700 hover:text-nordic-slate-900 hover:bg-slate-100/80 rounded-lg whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
       >
         Skills & Tech
       </a>
       <a 
         href="#projects" 
-        class="h-10 px-3.5 flex items-center text-sm font-medium text-nordic-slate-700 hover:text-nordic-slate-900 hover:bg-slate-100/80 rounded-lg whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+        data-section="projects"
+        class="desktop-nav-link h-10 px-3.5 flex items-center text-sm font-medium text-nordic-slate-700 hover:text-nordic-slate-900 hover:bg-slate-100/80 rounded-lg whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
       >
         Projekte & Impact
       </a>
       <a 
         href="#philosophy" 
-        class="h-10 px-3.5 flex items-center text-sm font-medium text-nordic-slate-700 hover:text-nordic-slate-900 hover:bg-slate-100/80 rounded-lg whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+        data-section="philosophy"
+        class="desktop-nav-link h-10 px-3.5 flex items-center text-sm font-medium text-nordic-slate-700 hover:text-nordic-slate-900 hover:bg-slate-100/80 rounded-lg whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
       >
         Philosophie
       </a>
       <a 
         href="#about" 
-        class="h-10 px-3.5 flex items-center text-sm font-medium text-nordic-slate-700 hover:text-nordic-slate-900 hover:bg-slate-100/80 rounded-lg whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
+        data-section="about"
+        class="desktop-nav-link h-10 px-3.5 flex items-center text-sm font-medium text-nordic-slate-700 hover:text-nordic-slate-900 hover:bg-slate-100/80 rounded-lg whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-nordic-emerald-500 outline-none"
       >
         Über mich
       </a>
@@ -158,4 +163,38 @@
       }
     });
   });
+
+  // Scroll-Spy: Aktiven Abschnitt im Header hervorheben
+  const sections = document.querySelectorAll('section[id]');
+  const desktopNavLinks = document.querySelectorAll<HTMLAnchorElement>('.desktop-nav-link');
+
+  if (sections.length > 0 && desktopNavLinks.length > 0) {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -65% 0px',
+      threshold: 0
+    };
+
+    const spyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          desktopNavLinks.forEach(link => {
+            const sectionTarget = link.getAttribute('data-section');
+            if (sectionTarget === currentId) {
+              link.classList.add('text-nordic-emerald-800', 'bg-nordic-emerald-50', 'font-semibold');
+              link.classList.remove('text-nordic-slate-700');
+              link.setAttribute('aria-current', 'true');
+            } else {
+              link.classList.remove('text-nordic-emerald-800', 'bg-nordic-emerald-50', 'font-semibold');
+              link.classList.add('text-nordic-slate-700');
+              link.removeAttribute('aria-current');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(sec => spyObserver.observe(sec));
+  }
 </script>
