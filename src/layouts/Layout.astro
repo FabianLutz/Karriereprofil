@@ -1,4 +1,6 @@
 ---
+import '@fontsource/geist-sans';
+
 export interface Props {
   title?: string;
   description?: string;
@@ -108,9 +110,9 @@ const schemaOrgJsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(schemaOrgJsonLd)} />
 
     <style is:global>
-      /* 100% DSGVO-konformer System-Fontstack: Zero externe Calls, maximale Render-Geschwindigkeit */
+      /* 100% DSGVO-konformer, lokaler Fontstack mit Geist Sans: Zero externe Calls, maximale Render-Geschwindigkeit */
       html {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        font-family: 'Geist Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         color-scheme: light;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
